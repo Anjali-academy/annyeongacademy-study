@@ -467,36 +467,39 @@ h2, h4 {
     }
 
     // 3. Load Success Stories from Google Sheets
-    const sheetURL =
-      "https://corsproxy.io/?" +
-      encodeURIComponent(
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQfXTVoRQeSr2AsEGydZBbndY_0MH-e-IJtO0jEjTUcapBjKSZt01ctQ0Gh3D1FQjVTkbTNVZK_bqSf/pub?output=csv"
-      );
+   const sheetURL =
+  "https://corsproxy.io/?" +
+  encodeURIComponent(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQfXTVoRQeSr2AsEGydZBbndY_0MH-e-IJtO0jEjTUcapBjKSZt01ctQ0Gh3D1FQjVTkbTNVZK_bqSf/pub?output=csv"
+  );
 
-    Papa.parse(sheetURL, {
-      download: true,
-      header: true,
-      complete: function (results) {
-        const data = results.data;
-        const container = document.getElementById("swiper-slides-container");
-        if (!container) return;
-        container.innerHTML = "";
+Papa.parse(sheetURL, {
+  download: true,
+  header: true,
+  complete: function (results) {
+    const data = results.data;
+    const container = document.getElementById("swiper-slides-container");
+    if (!container) return;
+    container.innerHTML = "";
 
-        data.forEach((story) => {
-          if (story.name && story.title && story.message) {
-            const slide = document.createElement("div");
-            slide.className = "swiper-slide";
-            slide.innerHTML = `
-              <div class="card p-3 shadow-sm text-start">
-                <img src="${story.image_url || "dummy_icon.png"}" alt="${story.name}" class="mb-2" />
-                <h5>${story.name}</h5>
-                <h6 class="text-muted">${story.title}</h6>
-                <p>${story.message}</p>
-              </div>
-            `;
-            container.appendChild(slide);
-          }
-        });
+    data.forEach((story) => {
+      if (story.name && story.title && story.message) {
+        const slide = document.createElement("div");
+        slide.className = "swiper-slide";
+        slide.innerHTML = `
+          <div class="card p-3 shadow-sm text-start">
+            <img src="${story.image_url || "dummy_icon.png"}" alt="${story.name}" class="mb-2" />
+            <h5>${story.name}</h5>
+            <h6 class="text-muted">${story.title}</h6>
+            <p>${story.message}</p>
+          </div>
+        `;
+        container.appendChild(slide);
+      }
+    });
+  }
+});
+
 
         // Re-initialize Swiper after dynamic slides added
         new Swiper(".mySwiper", {
@@ -523,4 +526,5 @@ h2, h4 {
 
 
 </body>
+
 </html>
