@@ -851,22 +851,7 @@ h2, h4 {
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // 1. Swiper Init (basic slider)
-    new Swiper(".mySwiper", {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      loop: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    });
-
-    // 2. Form submission logic
+    // 1. Form submission logic (keep if you’re using Google Script later)
     const scriptURL = "<YOUR_GSCRIPT_WEBAPP_URL>";
     const form = document.getElementById("inquiryForm");
     if (form) {
@@ -878,10 +863,7 @@ h2, h4 {
         formData.append("course", document.getElementById("course").value);
         formData.append("message", document.getElementById("message").value);
         formData.append("phone", document.getElementById("phone").value);
-        fetch(scriptURL, {
-          method: "POST",
-          body: formData,
-        })
+        fetch(scriptURL, { method: "POST", body: formData })
           .then((response) => response.text())
           .then((text) => {
             document.getElementById("response").innerText = "✅ " + text;
@@ -892,15 +874,15 @@ h2, h4 {
       });
     }
 
-    // 3. Load Success Stories from Google Sheets
-    const SHEET_ID = '1O4DOe6GHhjI9gR4KCxkZ6VYlzPGrzZTLKv5OJ5L24Ks';
-    const SHEET_NAME = 'Sheet1';
+    // 2. Load Success Stories from Google Sheets
+    const SHEET_ID = "1O4DOe6GHhjI9gR4KCxkZ6VYlzPGrzZTLKv5OJ5L24Ks";
+    const SHEET_NAME = "Sheet1";
     const URL = `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
 
     fetch(URL)
-      .then(response => response.json())
-      .then(data => {
-        console.log("Loaded Data:", data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("✅ Loaded Data:", data);
         const container = document.getElementById("swiper-slides-container");
         if (!container || data.length === 0) return;
 
@@ -919,7 +901,7 @@ h2, h4 {
           container.appendChild(slide);
         });
 
-    // Initialize Swiper again with correct config
+        // ✅ Only initialize Swiper once, after slides are ready
         new Swiper(".mySwiper", {
           slidesPerView: 1,
           spaceBetween: 20,
@@ -935,127 +917,12 @@ h2, h4 {
           },
         });
       })
-      .catch(error => {
-        console.error("Error loading stories:", error);
+      .catch((error) => {
+        console.error("❌ Error loading stories:", error);
       });
   });
 </script>
 
-
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // 2. Form submission logic
-    const scriptURL = "<YOUR_GSCRIPT_WEBAPP_URL>";
-    const form = document.getElementById("inquiryForm");
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const formData = new URLSearchParams();
-        formData.append("name", document.getElementById("name").value);
-        formData.append("email", document.getElementById("email").value);
-        formData.append("course", document.getElementById("course").value);
-        formData.append("message", document.getElementById("message").value);
-        formData.append("phone", document.getElementById("phone").value);
-        fetch(scriptURL, {
-          method: "POST",
-          body: formData,
-        })
-          .then((response) => response.text())
-          .then((text) => {
-            document.getElementById("response").innerText = "✅ " + text;
-          })
-          .catch((error) => {
-            document.getElementById("response").innerText = "❌ Error: " + error;
-          });
-      });
-    }
-
-    // 3. Load Success Stories from Google Sheets
-const SHEET_ID = '1O4DOe6GHhjI9gR4KCxkZ6VYlzPGrzZTLKv5OJ5L24Ks';
-const SHEET_NAME = 'Sheet1';
-const URL = `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
-
-fetch(URL)
-  .then(response => response.json())
-  .then(data => {
-    console.log("Loaded Data:", data);  // ✅ Now will show your JSON
-    // continue with Swiper display
-  })
-  .catch(error => console.error('Error loading data:', error));
-
-
-Papa.parse(sheetURL, {
-  download: true,
-  header: true,
-  complete: function (results) {
-    const data = results.data;
-    console.log("Loaded Data:", data);  // <-- Add this line
-    const container = document.getElementById("swiper-slides-container");
-    if (!container) return;
-    container.innerHTML = "";
-
-    data.forEach((story) => {
-      const slide = document.createElement("div");
-      slide.className = "swiper-slide";
-      slide.innerHTML = `
-        <div class="card p-3 shadow-sm text-start">
-          <img src="${story.image_url || "dummy_icon.png"}" alt="${story.name || "Story"}" class="mb-2" />
-          <h5>${story.name || "No Name"}</h5>
-          <h6 class="text-muted">${story.title || "No Title"}</h6>
-          <p>${story.message || "No Message"}</p>
-        </div>
-      `;
-      container.appendChild(slide);
-    });
-
-    new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: data.length > 2,
-      pagination: { el: ".swiper-pagination", clickable: true },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      breakpoints: {
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      },
-    });
-  },
-  error: function (err) {
-    console.error("PapaParse error:", err);
-  },
-});
-});
-</script>
-
-
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
