@@ -467,11 +467,7 @@ h2, h4 {
     }
 
     // 3. Load Success Stories from Google Sheets
-  const sheetURL =
-  "https://corsproxy.io/?" +
-  encodeURIComponent(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQfXTVoRQeSr2AsEGydZBbndY_0MH-e-IJtO0jEjTUcapBjKSZt01ctQ0Gh3D1FQjVTkbTNVZK_bqSf/pub?output=csv"
-  );
+  const sheetURL = "https://opensheet.elk.sh/2PACX-1vQfXTVoRQeSr2AsEGydZBbndY_0MH-e-IJtO0jEjTUcapBjKSZt01ctQ0Gh3D1FQjVTkbTNVZK_bqSf/Sheet1";
 
 Papa.parse(sheetURL, {
   download: true,
@@ -524,5 +520,6 @@ Papa.parse(sheetURL, {
 </body>
 
 </html>
+
 
 
