@@ -479,20 +479,18 @@ Papa.parse(sheetURL, {
     container.innerHTML = "";
 
     data.forEach((story) => {
-      if (story.name && story.title && story.message) {
-        const slide = document.createElement("div");
-        slide.className = "swiper-slide";
-        slide.innerHTML = `
-          <div class="card p-3 shadow-sm text-start">
-            <img src="${story.image_url || "dummy_icon.png"}" alt="${story.name}" class="mb-2" />
-            <h5>${story.name}</h5>
-            <h6 class="text-muted">${story.title}</h6>
-            <p>${story.message}</p>
-          </div>
-        `;
-        container.appendChild(slide);
-      }
-    });
+  const slide = document.createElement("div");
+  slide.className = "swiper-slide";
+  slide.innerHTML = `
+    <div class="card p-3 shadow-sm text-start">
+      <img src="${story.image_url || "dummy_icon.png"}" alt="${story.name || 'Story'}" class="mb-2" />
+      <h5>${story.name || "No Name"}</h5>
+      <h6 class="text-muted">${story.title || "No Title"}</h6>
+      <p>${story.message || "No Message"}</p>
+    </div>
+  `;
+  container.appendChild(slide);
+});
 
     // ✅ Move Swiper initialization INSIDE the complete() after slides loaded
     new Swiper(".mySwiper", {
@@ -520,6 +518,7 @@ Papa.parse(sheetURL, {
 </body>
 
 </html>
+
 
 
 
