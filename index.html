@@ -199,7 +199,7 @@ h2, h4 {
       <div class="col-lg-6">
         <div class="p-4 bg-white rounded shadow-sm">
           <h2 class="fw-bold mb-4" style="font-size: 2.5rem;">About Us</h2>
-          <p style="font-size: 1.1rem; line-height: 1.8;"><strong>Annyeong Academy</strong> was founded by <strong>Anjali</strong>, a currently living in Korea. With her first-hand GKS experience and love for Korean language, she created this academy for serious GKS aspirants and Korean learners in India.</p>
+          <p style="font-size: 1.1rem; line-height: 1.8;"><strong>Annyeong Academy</strong> was founded by <strong>Anjali</strong>, currently living in Korea. With her first-hand GKS experience and love for Korean language, she created this academy for serious GKS aspirants and Korean learners in India.</p>
           <p style="font-size: 1.1rem; line-height: 1.8;">Our team of <strong> GKS scholars & TOPIK Level 5+ certified</strong> teachers is committed to providing structured, results-driven courses — all in a small-batch learning environment.</p>
         </div>
       </div>
@@ -332,10 +332,30 @@ h2, h4 {
 
       <div class="col-md-6 col-lg-5">
         <div class="p-4 rounded-4 shadow-sm bg-white h-100" style="border-left: 6px solid #7B94BD;">
-          <h4 class="mb-3" style="color:#4B6185;">Foundation Course</h4>
-          <p><strong>Duration:</strong> 2 months</p>
-          <p><strong>Fees:</strong> ₹5,000</p>
-          <p><strong>Ideal for:</strong> Short-term Korean introduction</p>
+          <h4 class="mb-3" style="color:#4B6185;">Level 4 (Upper Intermediate)</h4>
+          <p><strong>Duration:</strong> 3 months (36 hours)</p>
+          <p><strong>Fees:</strong> ₹8,500</p>
+          <p><strong>Learn:</strong> Advanced Grammar, Long-form Conversation, Idioms & Expressions, TOPIK II Preparation</p>
+          <p><strong>Batch Size:</strong> Max 20 students</p>
+        </div>
+      </div>
+
+	  <div class="col-md-6 col-lg-5">
+        <div class="p-4 rounded-4 shadow-sm bg-white h-100" style="border-left: 6px solid #7B94BD;">
+          <h4 class="mb-3" style="color:#4B6185;">Level 5 (Advanced)</h4>
+          <p><strong>Duration:</strong> 3 months (36 hours)</p>
+          <p><strong>Fees:</strong> ₹9,000</p>
+          <p><strong>Learn:</strong> Complex Sentence Structures, Formal Korean, Discussion & Debate, Advanced TOPIK Preparation</p>
+          <p><strong>Batch Size:</strong> Max 20 students</p>
+        </div>
+      </div>
+
+	  <div class="col-md-6 col-lg-5">
+        <div class="p-4 rounded-4 shadow-sm bg-white h-100" style="border-left: 6px solid #7B94BD;">
+          <h4 class="mb-3" style="color:#4B6185;">Level 6 (Proficiency)</h4>
+          <p><strong>Duration:</strong> 3 months (36 hours)</p>
+          <p><strong>Fees:</strong> ₹9,500</p>
+          <p><strong>Learn:</strong> Academic Korean, Native-level Expressions, Professional Communication, Advanced TOPIK II Preparation</p>
           <p><strong>Batch Size:</strong> Max 20 students</p>
         </div>
       </div>
@@ -404,12 +424,12 @@ h2, h4 {
   </div>
 </section>
 
-<!-- Enroll Form -->
+<!-- Enroll Form --
 <section class="section" id="enroll">
   <div class="container">
     <h2>Ready to start learning Korean?</h2>
     <form action="https://formspree.io/f/mqaykvop" method="POST">
-      <!-- Hidden fields for config -->
+      <!-- Hidden fields for config --
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_redirect" value="https://AnnyeongAcademy.com/thank-you.html">
 
@@ -443,9 +463,28 @@ h2, h4 {
         <textarea name="message" class="form-control"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-success">Join Now</button>
+      <button type="submit" class="btn btn-success">Join Now</button> 
       <a href="https://wa.me/917982598318" target="_blank" class="btn btn-outline-success ms-2">WhatsApp Us</a>
     </form>
+  </div>
+</section> -->
+
+<!-- WhatsApp Enrollment Section -->
+<section class="section text-center" id="enroll">
+  <div class="container">
+    <h2>Ready to start learning Korean?</h2>
+    <p class="lead">
+      Contact us on WhatsApp for course details, batch schedules,
+      and enrollment assistance.
+    </p>
+    <a
+      href="https://wa.me/917982598318?text=Hello%20Annyeong%20Academy!%20I%20would%20like%20to%20know%20more%20about%20your%20courses."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-success btn-lg"
+    >
+      Chat with Us on WhatsApp
+    </a>
   </div>
 </section>
 
@@ -472,27 +511,27 @@ h2, h4 {
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // 1. Form submission logic (keep if you’re using Google Script later)
-    const scriptURL = "<YOUR_GSCRIPT_WEBAPP_URL>";
-    const form = document.getElementById("inquiryForm");
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const formData = new URLSearchParams();
-        formData.append("name", document.getElementById("name").value);
-        formData.append("email", document.getElementById("email").value);
-        formData.append("course", document.getElementById("course").value);
-        formData.append("message", document.getElementById("message").value);
-        formData.append("phone", document.getElementById("phone").value);
-        fetch(scriptURL, { method: "POST", body: formData })
-          .then((response) => response.text())
-          .then((text) => {
-            document.getElementById("response").innerText = "✅ " + text;
-          })
-          .catch((error) => {
-            document.getElementById("response").innerText = "❌ Error: " + error;
-          });
-      });
-    }
+//    const scriptURL = "<YOUR_GSCRIPT_WEBAPP_URL>";
+  //  const form = document.getElementById("inquiryForm");
+   // if (form) {
+     // form.addEventListener("submit", function (e) {
+       // e.preventDefault();
+        //const formData = new URLSearchParams();
+        //formData.append("name", document.getElementById("name").value);
+        //formData.append("email", document.getElementById("email").value);
+        //formData.append("course", document.getElementById("course").value);
+        //formData.append("message", document.getElementById("message").value);
+        //formData.append("phone", document.getElementById("phone").value);
+        //fetch(scriptURL, { method: "POST", body: formData })
+          //.then((response) => response.text())
+          //.then((text) => {
+            //document.getElementById("response").innerText = "✅ " + text;
+          //})
+          //.catch((error) => {
+            //document.getElementById("response").innerText = "❌ Error: " + error;
+         // });
+      //});
+    //}
 
     // 2. Load Success Stories from Google Sheets
     const SHEET_ID = "1O4DOe6GHhjI9gR4KCxkZ6VYlzPGrzZTLKv5OJ5L24Ks";
